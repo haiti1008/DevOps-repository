@@ -1,14 +1,48 @@
-# Pv2-eigen-venv-deployment
+# Pv2 – Eigen venv-experiment (deployment)
 
 ## Doel
-TODO: beschrijf wat dit experiment test/demonstreert.
+Demonstreren hoe een Python virtual environment gebruikt wordt
+voor deployment: omgeving opzetten, app schrijven, requirements
+exporteren en herdeploy vanuit requirements.txt.
 
-## Gebruikte tools
-- TODO
+## Gebruikte packages
+- Flask
+- Requests
 
 ## Stappen
-1. TODO
-2. TODO
+
+### 1. Venv aanmaken en activeren
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### 2. Packages installeren
+```bash
+pip install flask requests
+```
+
+### 3. App starten
+```bash
+python app.py
+```
+Ga naar: http://localhost:5000
+
+### 4. Requirements exporteren
+```bash
+pip freeze > requirements.txt
+```
+
+### 5. Herdeploy (nieuwe omgeving)
+```bash
+deactivate
+rm -rf venv
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python app.py
+```
 
 ## Resultaat
-TODO: korte beschrijving + eventueel screenshot.
+De app draait opnieuw identiek na herdeploy vanuit requirements.txt.
+
