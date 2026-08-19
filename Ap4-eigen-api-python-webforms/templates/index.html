@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Cisco Device Manager</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #f4f4f4; }
+    h1   { color: #1a73e8; }
+    h2   { color: #333; }
+    form.add-form { background: #fff; padding: 20px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    input, select { padding: 8px; margin: 6px 0; width: 100%; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+    button.add-btn { background: #1a73e8; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 14px; }
+    button.add-btn:hover { background: #1558b0; }
+    table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    th   { background: #1a73e8; color: #fff; padding: 12px; text-align: left; }
+    td   { padding: 10px 12px; border-bottom: 1px solid #eee; }
+    tr:last-child td { border-bottom: none; }
+    button.del-btn { background: #e53935; color: #fff; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
+    button.del-btn:hover { background: #b71c1c; }
+    .empty { color: #888; font-style: italic; padding: 16px; }
+    .api-link { margin-top: 20px; font-size: 13px; color: #555; }
+    .api-link a { color: #1a73e8; }
+  </style>
+</head>
+<body>
+  <h1>🌐 Cisco Device Manager</h1>
+
+  <h2>Voeg een apparaat toe</h2>
+  <form class="add-form" action="/add" method="POST">
+    <label>Hostname:</label>
+    <input type="text" name="hostname" placeholder="bv. R1-Router" required>
+    <label>IP-adres:</label>
+    <input type="text" name="ip" placeholder="bv. 192.168.1.1" required>
+    <label>Type apparaat:</label>
+    <select name="device_type" required>
+      <option value="">-- Kies type --</option>
+      <option value="Router">Router</option>
+      <option value="Switch">Switch</option>
+      <option value="Firewall">Firewall</option>
+      <option value="Access Point">Access Point</option>
+    </select>
+    <br><br>
+    <button class="add-btn" type="submit">➕ Toevoegen</button>
+  </form>
+
+  <h2>Geregistreerde apparaten</h2>
+  {% if devices %}
+  <table>
+    <tr>
+      <th>ID</th><th>Hostname</th><th>IP-adres</th><th>Type</th><th>Actie</th>
+    </tr>
+    {% for device in devices %}
+    <tr>
+      <td>{{ device.id }}</td>
+      <td>{{ device.hostname }}</td>
+      <td>{{ device.ip }}</td>
+      <td>{{ device.type }}</td>
+      <td>
+        <form action="/delete/{{ device.id }}" method="POST" style="margin:0">
+          <button class="del-btn" type="submit">🗑 Verwijder</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="empty">Nog geen apparaten toegevoegd.</p>
+  {% endif %}
+
+  <p class="api-link">📡 JSON API: <a href="/api/devices" target="_blank">http://localhost:5000/api/devices</a></p>
+</body>
+</html>
+
