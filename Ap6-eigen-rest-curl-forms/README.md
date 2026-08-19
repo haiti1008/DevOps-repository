@@ -1,14 +1,41 @@
-# Ap6-eigen-rest-curl-forms
+# Ap6 – Eigen REST-API experiment met curl (Forms)
 
-## Doel
-TODO: beschrijf wat dit experiment test/demonstreert.
+## Beschrijving
+Een Flask REST API die form-data verwerkt via curl.  
+Studenten kunnen worden toegevoegd, bekeken, aangepast en verwijderd
+via `application/x-www-form-urlencoded` form-data.
 
-## Gebruikte tools
-- TODO
+## Endpoints
 
-## Stappen
-1. TODO
-2. TODO
+| Method | URL                  | Beschrijving              |
+|--------|----------------------|---------------------------|
+| GET    | /students            | Alle studenten ophalen    |
+| GET    | /students/<id>       | Één student ophalen       |
+| POST   | /students            | Nieuwe student toevoegen  |
+| PUT    | /students/<id>       | Student updaten           |
+| DELETE | /students/<id>       | Student verwijderen       |
 
-## Resultaat
-TODO: korte beschrijving + eventueel screenshot.
+## Gebruikte technologieën
+- Python 3 / Flask
+- curl (form-data via `-d`)
+
+## Uitvoering
+```bash
+python3 app.py
+```
+
+## Curl-commando's (voorbeelden)
+```bash
+curl -X POST http://localhost:5000/students -d "name=Alice&email=alice@example.com&course=DevACS"
+curl -X GET  http://localhost:5000/students
+curl -X PUT  http://localhost:5000/students/1 -d "course=DevNet+Associate"
+curl -X DELETE http://localhost:5000/students/1
+```
+
+## Screenshots
+- Ap6_01_flask_running.png
+- Ap6_02_post_students.png
+- Ap6_03_get_all.png
+- Ap6_04_get_one_and_put.png
+- Ap6_05_delete_and_verify.png
+
