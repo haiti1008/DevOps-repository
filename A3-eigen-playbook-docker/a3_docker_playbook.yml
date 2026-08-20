@@ -1,0 +1,24 @@
+---
+- name: A3 - Nginx Docker-container starten via Ansible
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Verwijder bestaande container (indien aanwezig)
+      shell: docker rm -f ansible-nginx 2>/dev/null || true
+
+    - name: Pull de nginx-image
+      command: docker pull nginx
+
+    - name: Start nginx-container op poort 8080
+      command: docker run -d --name ansible-nginx -p 8080:80 nginx
+
+    - name: Controleer actieve containers
+      command: docker ps
+      register: docker_output
+
+    - name: Toon containeroverzicht
+      debug:
+        msg: "{{ docker_output.stdout_lines }}"
+
