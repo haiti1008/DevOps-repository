@@ -1,14 +1,21 @@
-# A2-eigen-playbook-webserver
+# A2 – Eigen Playbook-experiment: Webserver
 
-## Doel
-TODO: beschrijf wat dit experiment test/demonstreert.
+## Beschrijving
+Ansible playbook dat automatisch Apache2 installeert en een aangepaste homepage plaatst op localhost.
 
-## Gebruikte tools
-- TODO
+## Bestanden
+- `webserver_playbook.yml` – Ansible playbook
 
-## Stappen
-1. TODO
-2. TODO
+## Uitvoering
+```bash
+ansible-playbook webserver_playbook.yml
+```
 
 ## Resultaat
-TODO: korte beschrijving + eventueel screenshot.
+Apache2 actief op http://localhost met eigen HTML-homepage.
+
+## Screenshots
+- `A2_playbook_code.png` – Playbook broncode
+- `A2_playbook_run.png` – Uitvoer van de playbook
+- `A2_curl_result.png` – Verificatie via curl
+

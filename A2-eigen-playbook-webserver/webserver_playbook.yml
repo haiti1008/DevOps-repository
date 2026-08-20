@@ -1,0 +1,41 @@
+---
+- name: A2 – Eigen Webserver Playbook Experiment
+  hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+    - name: Installeer Apache2 webserver
+      apt:
+        name: apache2
+        state: present
+        update_cache: true
+
+    - name: Plaats een aangepaste homepage
+      copy:
+        dest: /var/www/html/index.html
+        content: |
+          <!DOCTYPE html>
+          <html lang="nl">
+          <head>
+            <meta charset="UTF-8">
+            <title>Welkom – A2 Experiment</title>
+            <style>
+              body { font-family: Arial, sans-serif; background: #f0f4f8; text-align: center; padding: 60px; }
+              h1   { color: #2c3e50; }
+              p    { color: #555; font-size: 1.1em; }
+            </style>
+          </head>
+          <body>
+            <h1>Eigen Webserver – Ansible Playbook A2</h1>
+            <p>Aangemaakt via Ansible door Haitham</p>
+            <p>DevOps – DEVASC cursus</p>
+          </body>
+          </html>
+
+    - name: Start en activeer Apache2
+      service:
+        name: apache2
+        state: started
+        enabled: true
+
