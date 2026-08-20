@@ -1,14 +1,20 @@
-# Pf1-flask-lab-6.3.6
+# Pf1 – Flask-experiment gebaseerd op lab 6.3.6
 
-## Doel
-TODO: beschrijf wat dit experiment test/demonstreert.
+## Beschrijving
+Een eenvoudige Flask-webapplicatie gebaseerd op lab 6.3.6.
+De app toont het IP-adres van de bezoeker op een lichtblauwe webpagina.
 
-## Gebruikte tools
-- TODO
+## Gebruikte bestanden
+- `sample_app.py` – Flask-applicatie (poort 5050)
+- `templates/index.html` – HTML-template met Jinja2
+- `static/style.css` – Stijlblad (lichtblauwe achtergrond)
 
-## Stappen
-1. TODO
-2. TODO
+## Hoe uitvoeren
+```bash
+python3 sample_app.py
+```
+Open vervolgens: http://localhost:5050
 
-## Resultaat
-TODO: korte beschrijving + eventueel screenshot.
+## Screenshot
+Zie map `screenshots/`
+
