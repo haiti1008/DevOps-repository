@@ -1,14 +1,12 @@
-# Di1-lab-6.2.7
+# Di1 - Lab 6.2.7: Build a Sample Web App in a Docker Container
 
-## Doel
-TODO: beschrijf wat dit experiment test/demonstreert.
+Flask webapp die het IP-adres van de client toont, gebouwd en gedraaid in een Docker-container via een bash-script.
 
-## Gebruikte tools
-- TODO
-
-## Stappen
-1. TODO
-2. TODO
+## Inhoud
+- `sample_app.py` - Flask app
+- `templates/index.html`, `static/style.css` - website files
+- `sample-app.sh` - bouwt Dockerfile, image en container automatisch
 
 ## Resultaat
-TODO: korte beschrijving + eventueel screenshot.
+Container `samplerunning` draait op poort 8080 en toont het IP-adres van de client.
+
