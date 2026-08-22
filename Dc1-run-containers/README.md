@@ -4,6 +4,7 @@ Simpel experiment waarbij een nginx-container gestart, getest en opgeruimd wordt
 
 ## Stappen
 1. Container starten vanaf de `nginx` image met poortmapping 8082:80
+docker run -d --name dc1-nginx -p 8082:80 nginx
 2. Controleren of de container draait (`docker ps`)
 3. Webserver testen via `curl localhost:8082`
 4. Logs bekijken (`docker logs dc1-nginx`)
