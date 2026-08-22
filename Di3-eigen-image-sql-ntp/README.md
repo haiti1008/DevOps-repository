@@ -1,14 +1,18 @@
-# Di3-eigen-image-sql-ntp
+# Di3 – Eigen Docker image experiment (NTP)
 
-## Doel
-TODO: beschrijf wat dit experiment test/demonstreert.
+Een eigen Docker image (gebaseerd op Alpine Linux) die een NTP-service (chrony) draait om systeemtijd te synchroniseren.
 
-## Gebruikte tools
-- TODO
+## Inhoud
+- `Dockerfile` – image definitie (Alpine + chrony)
+- `chrony.conf` – NTP-configuratie
 
-## Stappen
-1. TODO
-2. TODO
+## Uitvoeren
+```bash
+docker build -t di3-ntp .
+docker run -d --name di3-ntp-container di3-ntp
+docker exec di3-ntp-container chronyc tracking
+```
 
 ## Resultaat
-TODO: korte beschrijving + eventueel screenshot.
+Zie screenshot: `di3-ntp-tracking.png`
+
