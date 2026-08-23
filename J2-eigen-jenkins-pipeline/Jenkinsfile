@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Generating build artifact...'
+                sh 'echo "Build number: $BUILD_NUMBER" > report.txt'
+                sh 'date >> report.txt'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Checking artifact content...'
+                sh 'grep "Build number" report.txt'
+            }
+        }
+        stage('Archive') {
+            steps {
+                archiveArtifacts artifacts: 'report.txt', fingerprint: true
+            }
+        }
+    }
+    post {
+        success {
+            echo 'Pipeline succeeded!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
+}
+
