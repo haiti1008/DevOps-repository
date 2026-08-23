@@ -1,14 +1,21 @@
-# W1-webex-lab-8.6.7
+# W1 – Webex Teams API (Lab 8.6.7)
 
-## Doel
-TODO: beschrijf wat dit experiment test/demonstreert.
+Python scripts die de Webex Teams REST API gebruiken voor authenticatie, 
+en het beheren van People, Rooms, Memberships en Messages.
 
-## Gebruikte tools
-- TODO
+## Scripts
+- `authentication.py` – test toegangstoken
+- `list-people.py` – gebruikersinfo opvragen
+- `list-rooms.py` / `create-room.py` / `get-room-details.py` – rooms beheren
+- `list-memberships.py` / `create-membership.py` – lidmaatschap beheren
+- `create-message.py` – bericht sturen naar een room
 
-## Stappen
-1. TODO
-2. TODO
+## Gebruik
+Token instellen vóór uitvoeren:
 
-## Resultaat
-TODO: korte beschrijving + eventueel screenshot.
+export WEBEX_TOKEN='je_token_hier'
+
+
+## Screenshots
+Zie screenshots in deze folder voor bewijs van elke stap.
+
